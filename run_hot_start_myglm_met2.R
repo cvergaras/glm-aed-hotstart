@@ -24,9 +24,9 @@ states <- c("temp", "salt")
 #            "OGM_doc","OGM_docr","OGM_poc","OGM_don","OGM_donr","OGM_pon","OGM_dop","OGM_dopr","OGM_pop",
 #            "PHY_cyano","PHY_green","PHY_diatom")
 round_num <- 20
-file.copy("glm3_initial_spark.nml", "glm3.nml", overwrite = TRUE)
-file.copy("glm3_initial_spark.nml", "glm3_full.nml", overwrite = TRUE)
-full_time <- seq(as_datetime("1997-04-16 00:00:00"), as_datetime("1997-08-20 00:00:00"), "1 day")
+file.copy("glm3_initial_met2.nml", "glm3.nml", overwrite = TRUE)
+file.copy("glm3_initial_met2.nml", "glm3_full.nml", overwrite = TRUE)
+full_time <- seq(as_datetime("2021-01-01 00:00:00"), as_datetime("2021-06-20 00:00:00"), "1 day")
 #full_time <- seq(as_datetime("2021-01-01 00:00:00"), as_datetime("2021-06-15 00:00:00"), "1 day")
 full_time_string <- strftime(full_time,
                              format="%Y-%m-%d %H:%M",tz = "UTC")
@@ -194,7 +194,7 @@ for(i in 1:nsteps){
 }
 ##### DO CONTINUIOUS RUN ####
 # system2("/workspaces/focal_py39/AED_Tools/binaries/ubuntu/20.04/glm_latest/glm", args = "--nml glm3_full.nml", stdout = "output.txt")
-system2("/workspaces/focal_py39/2025/AED_Tools_Private/binaries/ubuntu/20.04/glm_latest/glm", stdout = paste0("txt/output", i, ".txt"))
+system2("/workspaces/focal_py39/2025/AED_Tools_Private/binaries/ubuntu/20.04/glm_latest/glm", args = "--nml glm3_full.nml", stdout = "output.txt")
 #GLM3r::run_glm(sim_folder = working_directory, nml_file = "glm3_full.nml")
 full_output <- get_glm_nc_cont(ncFile = "/output.nc",
                                working_dir = working_directory,
