@@ -157,7 +157,7 @@ for(i in 1:nsteps){
                         nml = "glm3.nml")
   }
   #GLM3r::run_glm(sim_folder = working_directory, nml_file = "glm3.nml", verbose = FALSE)
-  system2("/Users/quinn/Downloads/pf_flare/hotstart/glm-aed/glm-source/GLM/glm", stdout = paste0("output",i,".txt"))
+  system2("/workspaces/focal_py39/AED_Tools/binaries/ubuntu/20.04/glm_latest/glm", stdout = paste0("txt/output", i, ".txt"))
   GLM_temp_wq_out <- get_glm_nc_var(ncFile = "/output.nc",
                                     working_dir = working_directory,
                                     z_out = NA,
@@ -180,7 +180,7 @@ for(i in 1:nsteps){
   }
 }
 ##### DO CONTINUIOUS RUN ####
-system2("/Users/quinn/Downloads/pf_flare/hotstart/glm-aed/glm-source/GLM/glm", args = "--nml glm3_full.nml", stdout = "output.txt")
+system2("/workspaces/focal_py39/AED_Tools/binaries/ubuntu/20.04/glm_latest/glm", args = "--nml glm3_full.nml", stdout = "output.txt")
 #GLM3r::run_glm(sim_folder = working_directory, nml_file = "glm3_full.nml")
 full_output <- get_glm_nc_cont(ncFile = "/output.nc",
                                working_dir = working_directory,
@@ -207,5 +207,7 @@ combined <- bind_rows(tibble(height = layer_full,
                       tibble(height = layer_step,
                              temp = temp_step,
                              type = "step"))
-ggplot(combined, aes(x = temp, y = height, color = type)) + geom_point()
+ggplot(combined, aes(x = temp, y = height, color = type)) +
+  geom_point(aes(size = type)) +
+  scale_size_manual(values = c("full" = 4, "step" = 2))
 oxygen_full <- full_output$output[full_output$heights[,t] < 9.969210e+35, t, 3]
