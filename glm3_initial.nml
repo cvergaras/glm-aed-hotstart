@@ -55,7 +55,7 @@
    out_dir = './'
    out_fn = 'output'
    nsave = 24
-   !csv_lake_fname = 'lake'
+   csv_lake_fname = 'lake'
    !csv_point_nlevs = 4
    !csv_point_fname = 'WQ_'
    !csv_point_frombot = .false.

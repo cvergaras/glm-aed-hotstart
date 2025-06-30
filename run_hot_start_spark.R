@@ -24,9 +24,9 @@ states <- c("temp", "salt")
 #            "OGM_doc","OGM_docr","OGM_poc","OGM_don","OGM_donr","OGM_pon","OGM_dop","OGM_dopr","OGM_pop",
 #            "PHY_cyano","PHY_green","PHY_diatom")
 round_num <- 20
-file.copy("glm3_initial_met2.nml", "glm3.nml", overwrite = TRUE)
-file.copy("glm3_initial_met2.nml", "glm3_full.nml", overwrite = TRUE)
-full_time <- seq(as_datetime("2021-01-01 00:00:00"), as_datetime("2021-06-20 00:00:00"), "1 day")
+file.copy("glm3_initial_spark.nml", "glm3.nml", overwrite = TRUE)
+file.copy("glm3_initial_spark.nml", "glm3_full.nml", overwrite = TRUE)
+full_time <- seq(as_datetime("1997-04-16 00:00:00"), as_datetime("1997-06-20 00:00:00"), "1 day")
 #full_time <- seq(as_datetime("2021-01-01 00:00:00"), as_datetime("2021-06-15 00:00:00"), "1 day")
 full_time_string <- strftime(full_time,
                              format="%Y-%m-%d %H:%M",tz = "UTC")
