@@ -194,7 +194,7 @@ for(i in 1:nsteps){
 }
 ##### DO CONTINUIOUS RUN ####
 # system2("/workspaces/focal_py39/AED_Tools/binaries/ubuntu/20.04/glm_latest/glm", args = "--nml glm3_full.nml", stdout = "output.txt")
-system2("/workspaces/focal_py39/2025/AED_Tools_Private/binaries/ubuntu/20.04/glm_latest/glm", stdout = paste0("txt/output", i, ".txt"))
+system2("/workspaces/focal_py39/2025/AED_Tools_Private/binaries/ubuntu/20.04/glm_latest/glm", args = "--nml glm3_full.nml", stdout = "output.txt")
 #GLM3r::run_glm(sim_folder = working_directory, nml_file = "glm3_full.nml")
 full_output <- get_glm_nc_cont(ncFile = "/output.nc",
                                working_dir = working_directory,
